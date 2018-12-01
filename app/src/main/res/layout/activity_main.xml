@@ -1,9 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<com.loopeer.compatinset.InsetFramelayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.MainActivity">
+    android:orientation="vertical">
 
+    <android.support.v7.widget.RecyclerView
+        android:layout_marginTop="64dp"
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clipToPadding="false"
+        android:scrollbars="none"/>
 
-</FrameLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/ic_setting"
+        android:drawablePadding="@dimen/xsmall_padding"
+        android:text="@string/main_setting"
+        android:layout_marginBottom="@dimen/large_padding"
+        android:layout_marginLeft="@dimen/large_padding"
+        android:textStyle="bold"
+        android:textSize="@dimen/text_size_larger"
+        android:textColor="@color/text_color_white"
+        android:layout_gravity="bottom|left"/>
+
+</com.loopeer.compatinset.InsetFramelayout>

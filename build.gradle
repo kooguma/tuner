@@ -28,11 +28,11 @@ task clean(type: Delete) {
 
 ext {
     configs = [compileSdkVersion: 27,
-               buildToolsVersion: '27.0.0',
+               buildToolsVersion: '28.0.3',
                minSdkVersion    : 16,
                targetSdkVersion : 27,
-               versionCode      : 16,
-               versionName      : '1.0.0',]
+               versionCode      : 1,
+               versionName      : '0.1.0',]
 
     supportLibraryVersion = '27.0.0'
     laputappVersion = '1.4.5-beta57'

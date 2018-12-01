@@ -1,4 +1,18 @@
 <resources>
 
 
+    <style name="TunerText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/text_color_white</item>
+    </style>
+
+    <style name="TunerText.Primary">
+        <item name="android:textSize">@dimen/text_size_large</item>
+    </style>
+
+    <style name="TunerText.Secondary">
+        <item name="android:textSize">@dimen/text_size_medium</item>
+    </style>
+
 </resources>
