@@ -1,4 +1,26 @@
 <resources>
     <string name="app_name">Tuner</string>
     <string name="main_setting">setting</string>
+    <string name="product_detail_label">Details</string>
+    <string name="setting_label">Setting</string>
+    <string name="setting_message_suspension">Allow message suspension</string>
+    <string name="setting_version_update">Version_detection_and_update</string>
+    <string name="help_label">Help</string>
+    <string name="help_common_problems">Common problems:</string>
+    <string name="help_other_problems">Other problems:</string>
+    <string name="help_common_problems_content">
+         <![CDATA[
+                1.How to use Tuner?<br/><br/>
+                2.Watch tutorial video.
+          ]]>
+    </string>
+    <string name="help_other_problems_content">
+         <![CDATA[
+                Leave a message!<br/><br/>
+                Type
+          ]]>
+    </string>
+
+    <string name="help_send_message">send</string>
+    <string name="toning_tunner">Tunner</string>
 </resources>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.loopeer.compatinset.InsetFramelayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        style="@style/TunerText.Title"
+        android:layout_gravity="top|center_horizontal"
+        android:text="@string/toning_tunner"/>
+
+    <TextView
+        android:id="@+id/btn_help"
+        style="@style/TunerText"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_gravity="right|bottom"
+        android:drawableLeft="@drawable/ic_help"
+        android:drawablePadding="8dp"
+        android:text="@string/help_label"/>
+
+</com.loopeer.compatinset.InsetFramelayout>

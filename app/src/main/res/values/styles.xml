@@ -1,6 +1,5 @@
 <resources>
 
-
     <style name="TunerText">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -13,6 +12,18 @@
 
     <style name="TunerText.Secondary">
         <item name="android:textSize">@dimen/text_size_medium</item>
+    </style>
+
+    <style name="TunerText.Title">
+        <item name="android:textSize">@dimen/text_size_xxlarge</item>
+        <item name="android:layout_width">96dp</item>
+        <item name="android:layout_marginTop">32dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:paddingTop">6dp</item>
+        <item name="android:paddingBottom">6dp</item>
+        <item name="android:background">@drawable/shape_title</item>
+        <item name="android:textStyle">bold</item>
     </style>
 
 </resources>

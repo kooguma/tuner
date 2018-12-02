@@ -13,9 +13,11 @@ import top.koguma.tuner.model.Product;
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductViewHolder> {
 
     private List<Product> products;
+    private OnProductItemClickListener listener;
 
-    public ProductAdapter(List<Product> products) {
+    public ProductAdapter(List<Product> products, OnProductItemClickListener listener) {
         this.products = products;
+        this.listener = listener;
     }
 
     @Override
@@ -29,6 +31,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     @Override public void onBindViewHolder(ProductViewHolder holder, int position) {
         Product product = products.get(position);
         holder.nameText.setText(product.name);
+        holder.bindView(product);
     }
 
     @Override public int getItemCount() {
@@ -44,6 +47,14 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
             super(itemView);
             productImage = itemView.findViewById(R.id.img_product);
             nameText = itemView.findViewById(R.id.txt_name);
+        }
+
+        public void bindView(final Product product) {
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override public void onClick(View v) {
+                    if (listener != null) listener.onItemClick(product);
+                }
+            });
         }
     }
 

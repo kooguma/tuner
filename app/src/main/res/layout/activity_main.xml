@@ -4,15 +4,37 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <android.support.v7.widget.RecyclerView
+    <FrameLayout
         android:layout_marginTop="64dp"
-        android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:clipToPadding="false"
-        android:scrollbars="none"/>
+        android:orientation="horizontal">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clipToPadding="false"
+            android:scrollbars="none"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|right"
+            android:layout_marginRight="4dp"
+            android:src="@drawable/ic_right"/>
+    </FrameLayout>
+
+    <ImageView
+        android:id="@+id/btn_toning"
+        android:layout_width="149dp"
+        android:layout_height="149dp"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="120dp"
+        android:src="@drawable/ic_logo"/>
 
     <TextView
+        android:id="@+id/txt_setting"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:drawableLeft="@drawable/ic_setting"
