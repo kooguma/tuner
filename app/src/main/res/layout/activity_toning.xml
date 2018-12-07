@@ -1,22 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.loopeer.compatinset.InsetFramelayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/TunerText.Title"
+            android:layout_gravity="top|center_horizontal"
+            android:text="@string/toning_tunner"/>
+
+        <top.koguma.tuner.view.TitleSwitchTab
+            android:id="@+id/tab_switch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/large_padding"
+            android:layout_marginRight="@dimen/large_padding"
+            android:layout_marginLeft="@dimen/large_padding"/>
+
+        <top.koguma.tuner.view.ToningIndicator
+            android:id="@+id/indicator"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginTop="36dp"/>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="240dp"
+        android:layout_gravity="bottom">
+
+        <ImageView
+            android:id="@+id/img_instrument"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_toning_roughly"
+            android:layout_centerHorizontal="true"/>
+
+        <TextView
+            style="@style/TunerText.String"
+            android:id="@+id/btn_string_g"
+            android:layout_toLeftOf="@id/img_instrument"
+            android:text="G"/>
+
+        <TextView
+            style="@style/TunerText.String"
+            android:id="@+id/btn_string_d"
+            android:layout_below="@id/btn_string_g"
+            android:text="D"
+            android:layout_toLeftOf="@id/img_instrument"
+            android:layout_marginTop="24dp"/>
+
+        <TextView
+            style="@style/TunerText.String"
+            android:id="@+id/btn_string_a"
+            android:layout_toRightOf="@id/img_instrument"
+            android:text="A"/>
+
+        <TextView
+            style="@style/TunerText.String"
+            android:id="@+id/btn_string_e"
+            android:layout_below="@id/btn_string_a"
+            android:layout_marginTop="24dp"
+            android:layout_toRightOf="@id/img_instrument"
+            android:text="E"/>
+
+    </RelativeLayout>
 
     <TextView
-        style="@style/TunerText.Title"
-        android:layout_gravity="top|center_horizontal"
-        android:text="@string/toning_tunner"/>
-
-    <TextView
-        android:id="@+id/btn_help"
         style="@style/TunerText"
+        android:id="@+id/btn_help"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
         android:layout_gravity="right|bottom"
         android:drawableLeft="@drawable/ic_help"
         android:drawablePadding="8dp"
         android:text="@string/help_label"/>
-
 </com.loopeer.compatinset.InsetFramelayout>

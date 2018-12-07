@@ -1,48 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.loopeer.compatinset.InsetLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.loopeer.compatinset.InsetScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingLeft="8dp"
-    android:paddingRight="8dp"
-    android:orientation="vertical">
+    android:layout_height="wrap_content">
 
-    <TextView
-        style="@style/TunerText.Title"
-        android:text="@string/help_label"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:orientation="vertical">
 
-    <TextView
-        style="@style/TunerText"
-        android:layout_marginTop="@dimen/large_padding"
-        android:textSize="@dimen/text_size_xxlarge"
-        android:text="@string/help_common_problems"
-        android:textStyle="bold"/>
+        <TextView
+            style="@style/TunerText.Title"
+            android:text="@string/help_label"/>
 
-    <TextView
-        android:id="@+id/txt_common"
-        style="@style/TunerText"
-        android:text="@string/help_common_problems_content"/>
+        <TextView
+            style="@style/TunerText"
+            android:layout_marginTop="@dimen/large_padding"
+            android:textSize="@dimen/text_size_xxlarge"
+            android:text="@string/help_common_problems"
+            android:textStyle="bold"/>
 
-    <TextView
-        style="@style/TunerText"
-        android:layout_marginTop="46dp"
-        android:textSize="@dimen/text_size_xxlarge"
-        android:text="@string/help_other_problems"
-        android:textStyle="bold"/>
+        <TextView
+            style="@style/TunerText"
+            android:id="@+id/txt_common"
+            android:text="@string/help_common_problems_content"/>
 
-    <TextView
-        android:id="@+id/txt_other"
-        style="@style/TunerText"
-        android:text="@string/help_other_problems_content"/>
+        <TextView
+            style="@style/TunerText"
+            android:layout_marginTop="46dp"
+            android:textSize="@dimen/text_size_xxlarge"
+            android:text="@string/help_other_problems"
+            android:textStyle="bold"/>
 
-    <TextView
-        style="@style/TunerText"
-        android:textStyle="bold"
-        android:background="@drawable/shape_title"
-        android:paddingTop="4dp"
-        android:paddingBottom="4dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:layout_gravity="right"
-        android:text="@string/help_send_message"/>
+        <TextView
+            style="@style/TunerText"
+            android:id="@+id/txt_other"
+            android:text="@string/help_other_problems_content"/>
 
-</com.loopeer.compatinset.InsetLinearLayout>
+        <TextView
+            style="@style/TunerText"
+            android:id="@+id/txt_type"
+            android:text="@string/help_type"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:layout_marginTop="@dimen/large_padding"
+            android:gravity="left|top"
+            android:textCursorDrawable="@null"
+            android:padding="8dp"
+            android:textColor="@color/text_color_white"
+            android:background="@drawable/shape_title"/>
+
+        <TextView
+            style="@style/TunerText"
+            android:layout_marginTop="@dimen/large_padding"
+            android:textStyle="bold"
+            android:background="@drawable/shape_title"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:layout_gravity="right"
+            android:text="@string/help_send_message"/>
+
+    </LinearLayout>
+</com.loopeer.compatinset.InsetScrollView>

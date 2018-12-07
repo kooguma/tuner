@@ -26,4 +26,10 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <style name="TunerText.String">
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/btn_string_text</item>
+        <item name="android:background">@drawable/btn_string</item>
+    </style>
+
 </resources>

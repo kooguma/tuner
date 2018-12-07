@@ -21,7 +21,12 @@
         <activity android:name=".activity.ProductDetailActivity"></activity>
 
         <activity android:name=".activity.SettingActivity"></activity>
-        <activity android:name=".activity.HelpActivity"></activity>
+        <activity
+            android:name=".activity.HelpActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize|keyboard"
+            android:windowSoftInputMode="adjustPan|stateAlwaysHidden">
+
+        </activity>
         <activity android:name=".activity.ToningActivity"></activity>
 
     </application>

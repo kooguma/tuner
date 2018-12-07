@@ -4,10 +4,8 @@
     <declare-styleable name="TitleSwitchTab">
         <attr name="textColorNormal" format="color"/>
         <attr name="textColorSelected" format="color"/>
-        <attr name="tabRightDrawableNormal" format="reference"/>
-        <attr name="tabRightDrawableSelected" format="reference"/>
-        <attr name="tabLeftDrawableNormal" format="reference"/>
-        <attr name="tabLeftDrawableSelected" format="reference"/>
+        <attr name="tabDrawableNormal" format="reference"/>
+        <attr name="tabDrawableSelected" format="reference"/>
         <attr name="textSize" format="dimension"/>
     </declare-styleable>
 
