@@ -40,21 +40,7 @@
 
         <TextView
             style="@style/TunerText"
-            android:id="@+id/txt_type"
-            android:text="@string/help_type"/>
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="180dp"
-            android:layout_marginTop="@dimen/large_padding"
-            android:gravity="left|top"
-            android:textCursorDrawable="@null"
-            android:padding="8dp"
-            android:textColor="@color/text_color_white"
-            android:background="@drawable/shape_title"/>
-
-        <TextView
-            style="@style/TunerText"
+            android:id="@+id/txt_send"
             android:layout_marginTop="@dimen/large_padding"
             android:textStyle="bold"
             android:background="@drawable/shape_title"

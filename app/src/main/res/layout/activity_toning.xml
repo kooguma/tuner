@@ -43,28 +43,28 @@
 
         <TextView
             style="@style/TunerText.String"
-            android:id="@+id/btn_string_g"
+            android:id="@+id/btn_string_1"
             android:layout_toLeftOf="@id/img_instrument"
             android:text="G"/>
 
         <TextView
             style="@style/TunerText.String"
-            android:id="@+id/btn_string_d"
-            android:layout_below="@id/btn_string_g"
+            android:id="@+id/btn_string_2"
+            android:layout_below="@id/btn_string_1"
             android:text="D"
             android:layout_toLeftOf="@id/img_instrument"
             android:layout_marginTop="24dp"/>
 
         <TextView
             style="@style/TunerText.String"
-            android:id="@+id/btn_string_a"
+            android:id="@+id/btn_string_3"
             android:layout_toRightOf="@id/img_instrument"
             android:text="A"/>
 
         <TextView
             style="@style/TunerText.String"
-            android:id="@+id/btn_string_e"
-            android:layout_below="@id/btn_string_a"
+            android:id="@+id/btn_string_4"
+            android:layout_below="@id/btn_string_3"
             android:layout_marginTop="24dp"
             android:layout_toRightOf="@id/img_instrument"
             android:text="E"/>

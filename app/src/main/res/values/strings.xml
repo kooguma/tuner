@@ -26,4 +26,10 @@
     <string name="toning_viola">Viola</string>
     <string name="toning_cello">Cello</string>
     <string name="help_type">Type</string>
+
+    <string name="toning_string_a">A</string>
+    <string name="toning_string_c">C</string>
+    <string name="toning_string_e">E</string>
+    <string name="toning_string_d">D</string>
+    <string name="toning_string_g">G</string>
 </resources>
