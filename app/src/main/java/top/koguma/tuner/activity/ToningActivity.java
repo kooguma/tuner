@@ -60,16 +60,16 @@ public class ToningActivity extends TunerBaseActivity implements View.OnClickLis
                 Navigator.startHelpActivity(this);
                 break;
             case R.id.btn_string_1:
-
+                imageView.setImageResource(R.drawable.rough_1);
                 break;
             case R.id.btn_string_2:
-
+                imageView.setImageResource(R.drawable.rough_2);
                 break;
             case R.id.btn_string_3:
-
+                imageView.setImageResource(R.drawable.rough_3);
                 break;
             case R.id.btn_string_4:
-
+                imageView.setImageResource(R.drawable.rough_4);
                 break;
             default:
         }
@@ -107,5 +107,9 @@ public class ToningActivity extends TunerBaseActivity implements View.OnClickLis
             default:
                 break;
         }
+    }
+
+    public void updateInstrumentPicture(int curPos){
+
     }
 }

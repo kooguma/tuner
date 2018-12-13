@@ -6,6 +6,7 @@ import android.text.Html;
 import android.view.View;
 import android.widget.TextView;
 import com.laputapp.ui.BaseActivity;
+import top.koguma.tuner.BuildConfig;
 import top.koguma.tuner.R;
 
 public class HelpActivity extends BaseActivity {
@@ -26,10 +27,10 @@ public class HelpActivity extends BaseActivity {
             @Override public void onClick(View v) {
                 Intent email = new Intent(Intent.ACTION_SEND);
                 email.setType("message/rfc822");
-                email.putExtra(Intent.EXTRA_EMAIL, new String[] { "ToonikaTuner.com" });
-                email.putExtra(Intent.EXTRA_SUBJECT, "");
+                email.putExtra(Intent.EXTRA_EMAIL,new String[]{BuildConfig.EMAIL_ADDRESS});
+                email.putExtra(Intent.EXTRA_SUBJECT, "Help");
                 email.putExtra(Intent.EXTRA_TEXT, "");
-                startActivity(Intent.createChooser(email, "Toonika Tuner"));
+                startActivity(Intent.createChooser(email, ""));
             }
         });
     }

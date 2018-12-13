@@ -11,10 +11,20 @@ android {
         versionCode configs.versionCode
         versionName configs.versionName
     }
+
     buildTypes {
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+            buildConfigField 'String', 'EMAIL_ADDRESS', "\"$configs.emailDebug\""
+        }
+
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+            buildConfigField 'String', 'EMAIL_ADDRESS', "\"$configs.emailRelease\""
         }
     }
 }

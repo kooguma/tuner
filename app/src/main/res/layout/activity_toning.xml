@@ -38,13 +38,15 @@
             android:id="@+id/img_instrument"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_toning_roughly"
+            android:src="@drawable/rough_1"
             android:layout_centerHorizontal="true"/>
 
         <TextView
             style="@style/TunerText.String"
             android:id="@+id/btn_string_1"
             android:layout_toLeftOf="@id/img_instrument"
+            android:layout_marginRight="-56dp"
+            android:layout_marginTop="48dp"
             android:text="G"/>
 
         <TextView
@@ -53,20 +55,24 @@
             android:layout_below="@id/btn_string_1"
             android:text="D"
             android:layout_toLeftOf="@id/img_instrument"
-            android:layout_marginTop="24dp"/>
+            android:layout_marginRight="-56dp"
+            android:layout_marginTop="32dp"/>
 
         <TextView
             style="@style/TunerText.String"
             android:id="@+id/btn_string_3"
             android:layout_toRightOf="@id/img_instrument"
+            android:layout_marginTop="48dp"
+            android:layout_marginLeft="-56dp"
             android:text="A"/>
 
         <TextView
             style="@style/TunerText.String"
             android:id="@+id/btn_string_4"
             android:layout_below="@id/btn_string_3"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="32dp"
             android:layout_toRightOf="@id/img_instrument"
+            android:layout_marginLeft="-56dp"
             android:text="E"/>
 
     </RelativeLayout>
