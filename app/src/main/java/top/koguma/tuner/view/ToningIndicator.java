@@ -1,5 +1,6 @@
 package top.koguma.tuner.view;
 
+import android.animation.ValueAnimator;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -7,15 +8,19 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.Rect;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.AccelerateInterpolator;
+import top.koguma.tuner.R;
 
 public class ToningIndicator extends View {
 
     private final static String TAG = "ToningIndicator";
 
     private float mExpectedFrequency = 443f;
+    private float mCurrentFrequency = 0f;
 
     private int mWidth;
     private int mHeight;
@@ -25,6 +30,7 @@ public class ToningIndicator extends View {
 
     private Paint mPaint;
     private Paint mTextPain;
+    private Paint mFrequencyTextPain;
     private Paint mRectPain;
 
     private float mStrokeWidth;
@@ -40,7 +46,11 @@ public class ToningIndicator extends View {
 
     private Indicator mIndicator;
 
+    private float mDiffX;
+    private float mDiffXScale;
     private float mDelta;
+
+    private ValueAnimator mSlideAnimator;
 
     private OnFrequencyChangedListener mListener;
 
@@ -76,12 +86,27 @@ public class ToningIndicator extends View {
         mTextPain.setTextSize(20f);
         mTextPain.setTextAlign(Paint.Align.CENTER);
 
+        mFrequencyTextPain = new Paint();
+        mFrequencyTextPain.setColor(Color.WHITE);
+        mFrequencyTextPain.setTextSize(36f);
+        mFrequencyTextPain.setTextAlign(Paint.Align.CENTER);
+
         mRectPain = new Paint();
         mRectPain.setColor(Color.parseColor("#33FFFFFF"));
         mRectPain.setAntiAlias(true);
         mRectPain.setStyle(Paint.Style.FILL);
 
         mIndicator = new Indicator();
+
+        mSlideAnimator = ValueAnimator.ofFloat(0.0f, 1.0f);
+        mSlideAnimator.setInterpolator(new AccelerateInterpolator());
+        mSlideAnimator.setDuration(300);
+        mSlideAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override public void onAnimationUpdate(ValueAnimator animation) {
+                mDiffXScale = animation.getAnimatedFraction();
+                invalidate();
+            }
+        });
     }
 
     @Override protected void onSizeChanged(int w, int h, int oldw, int oldh) {
@@ -125,6 +150,8 @@ public class ToningIndicator extends View {
         final int scaleStartY = mHeight - 80;
         int initScale = -150;
 
+        float centerX = 0;
+
         for (int i = 0; i < SCALE_COUNT; i++) {
             final boolean isBigScale = i % 5 == 0;
             final float scaleHeight = isBigScale ? mBigScaleLength : mSmallScaleLength;
@@ -137,6 +164,11 @@ public class ToningIndicator extends View {
 
             //todo:
             if (initScale == 0 && isBigScale) {
+                if(Math.abs(mDelta) < 5) {
+                    mRectPain.setColor(Color.parseColor("#99FF7E14"));
+                }else {
+                    mRectPain.setColor(Color.parseColor("#33FFFFFF"));
+                }
                 canvas.drawRect(
                     startX - RECT_SIDE_LENGTH, 0, startX + RECT_SIDE_LENGTH,
                     mHeight, mRectPain);
@@ -144,6 +176,9 @@ public class ToningIndicator extends View {
 
             if (isBigScale) {
                 //draw the text
+                if (initScale == 0) {
+                    centerX = startX;
+                }
                 final String text = initScale > 0
                                     ? "+" + String.valueOf(initScale)
                                     : String.valueOf(initScale);
@@ -154,17 +189,37 @@ public class ToningIndicator extends View {
         }
 
         //draw the indicator at the top layer
-        mIndicator.pivotX = mContentPadding + mDelta;
+        final float lastPivotX = mIndicator.pivotX;
+        final float curPivotX = mContentPadding + mDiffX;
+        mIndicator.pivotX = lastPivotX + (curPivotX - lastPivotX) * mDiffXScale;
         mIndicator.pivotStartY = 0;
         mIndicator.pivotStopY = mHeight;
         mIndicator.draw(canvas);
 
+        //draw the frequency text
+        canvas.drawText(String.format("当前频率: %.2fhz", mCurrentFrequency), centerX, 100,
+            mFrequencyTextPain);
     }
 
     public void setFrequency(float frequency) {
         final float delta = frequency - mExpectedFrequency;
-        if (mDelta != delta && mListener != null) {
+        if (mDiffX != delta && mListener != null) {
             mListener.OnFrequencyChanged(frequency);
+        }
+    }
+
+    public void setDeltaFrequency(float delta) {
+        mDelta = delta;
+        final float unitWidth = (mWidth - mContentPadding * 2) / 300f;
+        mDiffX = unitWidth * (delta + 150);
+        mCurrentFrequency = delta;
+        mSlideAnimator.start();
+    }
+
+    @Override protected void onDetachedFromWindow() {
+        super.onDetachedFromWindow();
+        if (mSlideAnimator != null) {
+            mSlideAnimator.cancel();
         }
     }
 
@@ -191,6 +246,7 @@ public class ToningIndicator extends View {
 
         void draw(Canvas canvas) {
             //draw the triangles
+            path.reset();
             path.moveTo(pivotX - TRIANGLE_SIDE_LENGTH, pivotStartY);
             path.lineTo(pivotX + TRIANGLE_SIDE_LENGTH, pivotStartY);
             path.lineTo(pivotX, pivotStartY + TRIANGLE_SIDE_LENGTH);

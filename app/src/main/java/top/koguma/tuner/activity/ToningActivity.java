@@ -1,9 +1,21 @@
 package top.koguma.tuner.activity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import io.reactivex.Flowable;
+import io.reactivex.Observable;
+import io.reactivex.Scheduler;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.functions.Consumer;
+import io.reactivex.functions.Function;
+import io.reactivex.schedulers.Schedulers;
+import java.util.concurrent.TimeUnit;
+import org.reactivestreams.Publisher;
+import org.reactivestreams.Subscriber;
+import org.reactivestreams.Subscription;
 import top.koguma.tuner.Navigator;
 import top.koguma.tuner.R;
 import top.koguma.tuner.view.TitleSwitchTab;
@@ -28,9 +40,26 @@ public class ToningActivity extends TunerBaseActivity implements View.OnClickLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_toning);
         initViews();
+        registerSubscription(
+            Flowable
+                .interval(1000, TimeUnit.MILLISECONDS)
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnNext(new Consumer<Long>() {
+                    @Override public void accept(Long aLong) throws Exception {
+                        //随机正负号
+                        double sign = Math.random() > 0.5 ? 1d : -1d;
+                        //随机频率 -150 到 150
+                        double frequency = sign * Math.random() * 150;
+                        indicator.setDeltaFrequency((float) frequency);
+                    }
+                })
+                .subscribe()
+        );
+
     }
 
     void initViews() {
+        indicator = (ToningIndicator) findViewById(R.id.indicator);
         btnHelp = (TextView) findViewById(R.id.btn_help);
         btnHelp.setOnClickListener(this);
         tabSwitch = (TitleSwitchTab) findViewById(R.id.tab_switch);
@@ -109,7 +138,7 @@ public class ToningActivity extends TunerBaseActivity implements View.OnClickLis
         }
     }
 
-    public void updateInstrumentPicture(int curPos){
+    public void updateInstrumentPicture(int curPos) {
 
     }
 }
