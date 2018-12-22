@@ -6,20 +6,16 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
-import android.graphics.Rect;
 import android.support.annotation.Nullable;
-import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 import android.view.animation.AccelerateInterpolator;
-import top.koguma.tuner.R;
 
 public class ToningIndicator extends View {
 
     private final static String TAG = "ToningIndicator";
 
-    private float mExpectedFrequency = 443f;
+    private float mExpectedFrequency = 0f;
     private float mCurrentFrequency = 0f;
 
     private int mWidth;
@@ -164,9 +160,9 @@ public class ToningIndicator extends View {
 
             //todo:
             if (initScale == 0 && isBigScale) {
-                if(Math.abs(mDelta) < 5) {
+                if (Math.abs(mDelta) < 5 && mCurrentFrequency != 0) {
                     mRectPain.setColor(Color.parseColor("#99FF7E14"));
-                }else {
+                } else {
                     mRectPain.setColor(Color.parseColor("#33FFFFFF"));
                 }
                 canvas.drawRect(
@@ -197,10 +193,14 @@ public class ToningIndicator extends View {
         mIndicator.draw(canvas);
 
         //draw the frequency text
-        canvas.drawText(String.format("当前频率: %.2fhz", mCurrentFrequency), centerX, 100,
+        canvas.drawText(String.format("frequency: %.2fhz", mCurrentFrequency), centerX, 60,
+            mFrequencyTextPain);
+        canvas.drawText(String.format("frequency expected: %.2fhz", mExpectedFrequency), centerX,
+            100,
             mFrequencyTextPain);
     }
 
+    @Deprecated
     public void setFrequency(float frequency) {
         final float delta = frequency - mExpectedFrequency;
         if (mDiffX != delta && mListener != null) {
@@ -208,11 +208,16 @@ public class ToningIndicator extends View {
         }
     }
 
-    public void setDeltaFrequency(float delta) {
-        mDelta = delta;
+    /**
+     * @param frequencyExpected 期望频率
+     * @param frequencyActual 实际频率
+     */
+    public void setDeltaFrequency(float frequencyExpected, float frequencyActual) {
+        mDelta = frequencyActual - frequencyExpected;
         final float unitWidth = (mWidth - mContentPadding * 2) / 300f;
-        mDiffX = unitWidth * (delta + 150);
-        mCurrentFrequency = delta;
+        mDiffX = unitWidth * (mDelta + 150);
+        mExpectedFrequency = frequencyExpected;
+        mCurrentFrequency = frequencyActual;
         mSlideAnimator.start();
     }
 

@@ -32,4 +32,6 @@
     <string name="toning_string_e">E</string>
     <string name="toning_string_d">D</string>
     <string name="toning_string_g">G</string>
+    <string name="start">start</string>
+    <string name="stop">stop</string>
 </resources>
